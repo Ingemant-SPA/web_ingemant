@@ -94,3 +94,56 @@ src/
 
 - Daniel Mardones, Supervisor de mantenimiento y desarrollador
 - Ingemant SPA, Ingenieria y mantenimiento industrial
+
+## Gestion de perfiles del equipo
+
+La pagina publica de Equipo usa una sola fuente de datos:
+
+- `src/data/site-content.js`
+- Export: `teamProfiles`
+
+Cada persona del equipo se define como un objeto dentro del arreglo `teamProfiles`. En ese mismo objeto se cruza:
+
+- Foto: campo `photo`
+- Resena profesional: campo `bio`
+- Habilidades: campo `skills`
+- Certificaciones: campo `certifications`
+- Portafolio tecnico: campo `portfolio`
+
+Ejemplo de estructura:
+
+```js
+{
+	id: 'nombre-apellido',
+	name: 'Nombre Apellido',
+	title: 'Cargo',
+	area: 'Direccion | Supervision | Planificacion | Tecnicos',
+	photo: '/team/nombre-apellido.jpg',
+	yearsExperience: 8,
+	location: 'Puerto Montt',
+	bio: 'Resena profesional publica del integrante.',
+	skills: ['Habilidad 1', 'Habilidad 2'],
+	certifications: ['Certificacion 1', 'Certificacion 2'],
+	portfolio: ['Proyecto o logro 1', 'Proyecto o logro 2'],
+}
+```
+
+### Donde guardar las fotos
+
+- Carpeta: `public/team/`
+- Ruta referenciada en `photo`: `/team/archivo.jpg`
+
+Ejemplo:
+
+- Archivo fisico: `public/team/camila-oyarzun.jpg`
+- Campo en perfil: `photo: '/team/camila-oyarzun.jpg'`
+
+### Flujo recomendado para agregar un perfil
+
+1. Subir la foto en `public/team/` con nombre en minusculas y guiones.
+2. Crear el objeto de la persona en `teamProfiles` dentro de `src/data/site-content.js`.
+3. Asegurar que `photo` apunte al archivo correcto y que `bio` tenga la resena profesional.
+4. Completar `skills`, `certifications` y `portfolio`.
+5. Ejecutar `npm run build` para validar.
+
+Nota: si falta la foto, la web mostrara automaticamente un avatar con iniciales.
