@@ -1,6 +1,55 @@
+import { useState } from 'react'
 import { company } from '../data/site-content'
 
+const TARGET_EMAIL = 'dmardones@ingemantspa.com'
+
 function ContactPage() {
+  const [status, setStatus] = useState({ type: 'idle', message: '' })
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setStatus({ type: 'loading', message: 'Enviando solicitud...' })
+
+    const formData = new FormData(event.currentTarget)
+    formData.append('_subject', 'Nuevo contacto desde web Ingemant')
+    formData.append('_captcha', 'false')
+    formData.append('_template', 'table')
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${TARGET_EMAIL}`, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      })
+
+      if (!response.ok) {
+        throw new Error('FormSubmit no disponible')
+      }
+
+      setStatus({
+        type: 'success',
+        message: 'Solicitud enviada. Revisa dmardones@ingemantspa.com.',
+      })
+      event.currentTarget.reset()
+      return
+    } catch {
+      const name = String(formData.get('name') || '')
+      const email = String(formData.get('email') || '')
+      const message = String(formData.get('message') || '')
+      const subject = encodeURIComponent('Nuevo contacto desde web Ingemant')
+      const body = encodeURIComponent(
+        `Nombre: ${name}\nCorreo: ${email}\n\nRequerimiento:\n${message}`,
+      )
+
+      window.location.href = `mailto:${TARGET_EMAIL}?subject=${subject}&body=${body}`
+      setStatus({
+        type: 'warning',
+        message:
+          'No se pudo enviar de forma automatica. Se abrio tu cliente de correo como respaldo.',
+      })
+    }
+  }
+
   return (
     <main>
       <section className="container page-header section-space">
@@ -18,15 +67,8 @@ function ContactPage() {
             <p>Ubicacion: {company.location}</p>
           </article>
 
-          <form
-            className="contact-card"
-            action="https://formsubmit.co/dmardones@ingemantspa.com"
-            method="POST"
-          >
+          <form className="contact-card" onSubmit={handleSubmit}>
             <h2>Mensaje inicial</h2>
-            <input type="hidden" name="_subject" value="Nuevo contacto desde web Ingemant" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
             <label>
               Nombre
               <input type="text" name="name" placeholder="Tu nombre" required />
@@ -44,7 +86,10 @@ function ContactPage() {
                 required
               />
             </label>
-            <button type="submit">Enviar solicitud</button>
+            <button type="submit" disabled={status.type === 'loading'}>
+              {status.type === 'loading' ? 'Enviando...' : 'Enviar solicitud'}
+            </button>
+            {status.type !== 'idle' && <p>{status.message}</p>}
           </form>
         </div>
       </section>
