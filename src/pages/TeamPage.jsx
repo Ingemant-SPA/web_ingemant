@@ -63,9 +63,9 @@ function TeamPage() {
     <main>
       <section className="container page-header section-space">
         <p className="eyebrow">Equipo Tecnico</p>
-        <h1>Red social tecnica publica de Ingemant</h1>
+        <h1>Equipo tecnico de Ingemant</h1>
         <p>
-          Este espacio esta preparado para mostrar fotos reales del personal, perfil tecnico profesional, certificaciones y portafolio de habilidades por cada integrante.
+          Este espacio esta preparado para mostrar perfiles reales del equipo, experiencia tecnica, certificaciones y habilidades clave de cada integrante.
         </p>
 
         <div className="team-summary-row">
