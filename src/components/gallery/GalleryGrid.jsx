@@ -38,9 +38,9 @@ function GalleryGrid() {
     return (
       <section className="container section-space">
         <div className="gallery-empty">
-          <h2>Galeria en preparacion</h2>
+          <h2>Galeria tecnica en actualizacion</h2>
           <p>
-            Agrega imagenes en <strong>public/gallery</strong> y se publicaran automaticamente en esta seccion.
+            Esta seccion se actualiza con registros visuales de ejecuciones e intervenciones en terreno.
           </p>
         </div>
       </section>
@@ -52,7 +52,7 @@ function GalleryGrid() {
       <div className="section-heading">
         <p className="eyebrow">Proyectos</p>
         <h2>Galeria tecnica interactiva</h2>
-        <p className="section-caption">Explora intervenciones con vista ampliada, filtros y navegacion fluida.</p>
+        <p className="section-caption">Explora intervenciones y evidencias de trabajo con filtros y vista ampliada.</p>
       </div>
 
       <div className="gallery-toolbar">

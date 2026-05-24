@@ -7,7 +7,7 @@ function AboutPage() {
         <p className="eyebrow">Nosotros</p>
         <h1>Ingenieria operativa para industrias exigentes</h1>
         <p>
-          Ingemant SPA integra experiencia de mantenimiento y ejecucion tecnica con una cultura orientada a la confiabilidad.
+          Ingemant SPA integra ingenieria y mantenimiento industrial para operaciones donde la confiabilidad del aire comprimido y los sistemas de oxigenacion es clave para la continuidad operacional.
         </p>
       </section>
 

@@ -37,7 +37,7 @@ function HeroSection() {
           <h1>{company.name}</h1>
           <p className="hero-copy">{company.tagline}</p>
           <p className="hero-copy hero-copy--subtle">
-            Soluciones en mantenimiento industrial, aire comprimido, oxigenacion y automatizacion para operaciones con alta exigencia.
+            Cobertura tecnica para distintas industrias, con foco principal en sistemas de aire comprimido asociados a procesos de oxigenacion y continuidad operacional.
           </p>
           <div className="hero-cta-row">
             <Link className="hero-cta" to="/contacto">
@@ -84,14 +84,14 @@ function HeroSection() {
 
               <h2>Banner de proyectos recientes</h2>
               <p>
-                Presentacion dinamica con miniaturas reales de la carpeta gallery para mantener el sitio siempre actualizado.
+                Visualizacion de actividades e intervenciones en terreno para respaldar experiencia tecnica y capacidad de ejecucion.
               </p>
             </>
           ) : (
             <>
               <span className="wave" aria-hidden="true" />
               <h2>Linea visual Ingemant</h2>
-              <p>Diseño corporativo en escala azul con modo claro/oscuro y lenguaje tecnico confiable.</p>
+              <p>Comunicacion corporativa orientada a ingenieria aplicada, seguridad y confiabilidad operacional.</p>
             </>
           )}
         </motion.div>

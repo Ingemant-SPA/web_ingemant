@@ -18,8 +18,8 @@ function Footer() {
 
         <section>
           <h3>Estado del sitio</h3>
-          <p>Version inicial con placeholders editables.</p>
-          <p>Galeria conectada a public/gallery.</p>
+          <p>Contenido corporativo en evolucion y abierto a retroalimentacion ejecutiva.</p>
+          <p>Base digital preparada para incorporar mejoras de servicios, proyectos y casos de uso.</p>
         </section>
       </div>
     </footer>

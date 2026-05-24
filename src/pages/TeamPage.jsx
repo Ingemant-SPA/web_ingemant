@@ -65,7 +65,7 @@ function TeamPage() {
         <p className="eyebrow">Equipo Tecnico</p>
         <h1>Equipo tecnico de Ingemant</h1>
         <p>
-          Este espacio esta preparado para mostrar perfiles reales del equipo, experiencia tecnica, certificaciones y habilidades clave de cada integrante.
+          Presentamos un equipo multidisciplinario orientado a ingenieria, mantenimiento y ejecucion en terreno para operaciones industriales de alta exigencia.
         </p>
 
         <div className="team-summary-row">
@@ -105,7 +105,7 @@ function TeamPage() {
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Habilidad, certificacion o nombre"
+              placeholder="Habilidad tecnica, certificacion o nombre"
             />
           </label>
         </div>

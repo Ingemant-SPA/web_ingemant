@@ -28,7 +28,7 @@ function ContactPage() {
 
       setStatus({
         type: 'success',
-        message: 'Solicitud enviada. Revisa dmardones@ingemantspa.com.',
+        message: 'Solicitud enviada correctamente. Nuestro equipo tecnico revisara tu requerimiento.',
       })
       event.currentTarget.reset()
       return
@@ -54,8 +54,8 @@ function ContactPage() {
     <main>
       <section className="container page-header section-space">
         <p className="eyebrow">Contacto</p>
-        <h1>Canal directo con el equipo tecnico</h1>
-        <p>Formulario activo para enviar solicitudes directamente al equipo tecnico.</p>
+        <h1>Canal directo con ingenieria y mantenimiento</h1>
+        <p>Comparte tu requerimiento y coordinaremos una respuesta tecnica acorde a tu operacion.</p>
       </section>
 
       <section className="container section-space">
@@ -82,7 +82,7 @@ function ContactPage() {
               <textarea
                 rows="5"
                 name="message"
-                placeholder="Describe brevemente tu necesidad tecnica"
+                placeholder="Describe tu necesidad tecnica, alcance y contexto operacional"
                 required
               />
             </label>
