@@ -1,0 +1,105 @@
+project:
+  name: "Web Corporativa Ingemant SPA"
+  type: "Frontend React"
+  version: "1.0.0"
+  status: "Base frontend implementada"
+  description: >
+    Sitio web corporativo para Ingemant SPA, planificado en React + Vite,
+    con arquitectura modular y despliegue objetivo en Vercel.
+
+technologies:
+  frontend:
+    - React 18
+    - Vite
+    - TailwindCSS
+    - React Router
+    - Axios
+  deployment:
+    - Vercel
+  tools:
+    - GitHub
+    - VSCode
+    - Node.js
+
+architecture:
+  state: "Implementada (fase base)"
+  structure:
+    - public/: "Imagenes, logos y assets estaticos"
+    - public/gallery: "Fuente de imagenes para galeria automatica"
+    - src/assets: "Recursos internos"
+    - src/components: "Componentes reutilizables"
+    - src/pages: "Paginas principales del sitio"
+    - src/router: "Sistema de rutas"
+    - src/styles: "Estilos globales"
+    - src/utils: "Funciones auxiliares"
+
+content_strategy:
+  initial_state:
+    logos_available: false
+    photos_available: false
+    approved_copy_available: false
+  approach:
+    - "Usar placeholders temporales para logo y textos"
+    - "Permitir reemplazo progresivo sin cambios estructurales"
+
+gallery:
+  source_directory: "public/gallery"
+  auto_discovery: true
+  allowed_extensions:
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".webp"
+  empty_state: "Mostrar componente visual de galeria vacia con mensaje profesional"
+
+features:
+  - Home con hero corporativo
+  - Seccion de servicios industriales
+  - Galeria de proyectos autogenerada desde carpeta del repositorio
+  - Pagina de contacto
+  - Formulario con envio por EmailJS o API futura
+  - Diseno responsivo
+  - Switch de modo claro y oscuro
+  - Linea visual corporativa azul inspirada en referencia de portada
+  - Preparado para integracion IoT futura
+
+theming:
+  mode_switch: true
+  visual_intent: "Confianza, limpieza tecnica y consistencia corporativa"
+  palette:
+    blue_deep: "#0B2E78"
+    blue_primary: "#1F4FAF"
+    blue_accent: "#2F6FD6"
+    blue_support: "#6FA6FF"
+    background_dark: "#071631"
+    background_light: "#F4F8FF"
+    text_on_dark: "#EAF1FF"
+    text_on_light: "#0D1B3A"
+
+deployment:
+  provider: "Vercel"
+  mode: "Configuracion lista para activar en despliegue"
+  build_command: "npm run build"
+  output_directory: "dist"
+  automatic_deploy: true
+
+workflow:
+  branches:
+    main: "Produccion"
+    feature/*: "Desarrollo de nuevas funcionalidades"
+  steps:
+    - commit
+    - push
+    - build
+    - deploy
+
+security:
+  - No exponer claves en el repositorio
+  - Usar variables de entorno en Vercel
+  - Mantener dependencias actualizadas
+
+future_integrations:
+  - Backend FastAPI
+  - Dashboard IoT
+  - Integracion con sistemas de mantenimiento
+  - API para reportes tecnicos
