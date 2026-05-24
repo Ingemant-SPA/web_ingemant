@@ -6,9 +6,7 @@ function ContactPage() {
       <section className="container page-header section-space">
         <p className="eyebrow">Contacto</p>
         <h1>Canal directo con el equipo tecnico</h1>
-        <p>
-          Formulario de contacto preparado para integracion futura con EmailJS o API propia.
-        </p>
+        <p>Formulario activo para enviar solicitudes directamente al equipo tecnico.</p>
       </section>
 
       <section className="container section-space">
@@ -20,21 +18,33 @@ function ContactPage() {
             <p>Ubicacion: {company.location}</p>
           </article>
 
-          <form className="contact-card" onSubmit={(event) => event.preventDefault()}>
+          <form
+            className="contact-card"
+            action="https://formsubmit.co/dmardones@ingemantspa.com"
+            method="POST"
+          >
             <h2>Mensaje inicial</h2>
+            <input type="hidden" name="_subject" value="Nuevo contacto desde web Ingemant" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
             <label>
               Nombre
-              <input type="text" name="name" placeholder="Tu nombre" />
+              <input type="text" name="name" placeholder="Tu nombre" required />
             </label>
             <label>
               Correo
-              <input type="email" name="email" placeholder="tu@empresa.cl" />
+              <input type="email" name="email" placeholder="tu@empresa.cl" required />
             </label>
             <label>
               Requerimiento
-              <textarea rows="5" name="message" placeholder="Describe brevemente tu necesidad tecnica" />
+              <textarea
+                rows="5"
+                name="message"
+                placeholder="Describe brevemente tu necesidad tecnica"
+                required
+              />
             </label>
-            <button type="submit">Enviar (demo)</button>
+            <button type="submit">Enviar solicitud</button>
           </form>
         </div>
       </section>

@@ -1,7 +1,7 @@
 export const company = {
   name: 'Ingemant SPA',
   tagline: 'Ingenieria aplicada para continuidad operacional industrial.',
-  email: 'contacto@ingemant.cl',
+  email: 'contacto@ingemantspa.com',
   phone: '+56 9 0000 0000',
   location: 'Puerto Montt, Chile',
 }
