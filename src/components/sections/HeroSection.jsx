@@ -1,5 +1,8 @@
-import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { company, metrics } from '../../data/site-content'
+import galleryItems from '../../data/gallery-manifest.json'
 
 const rise = {
   hidden: { opacity: 0, y: 22 },
@@ -11,6 +14,21 @@ const rise = {
 }
 
 function HeroSection() {
+  const bannerItems = galleryItems.slice(0, 8)
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  useEffect(() => {
+    if (bannerItems.length < 2) return undefined
+
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % bannerItems.length)
+    }, 3600)
+
+    return () => clearInterval(timer)
+  }, [bannerItems.length])
+
+  const selectedBanner = bannerItems[activeSlide]
+
   return (
     <section className="hero-wrap">
       <div className="container hero-grid">
@@ -21,12 +39,61 @@ function HeroSection() {
           <p className="hero-copy hero-copy--subtle">
             Soluciones en mantenimiento industrial, aire comprimido, oxigenacion y automatizacion para operaciones con alta exigencia.
           </p>
+          <div className="hero-cta-row">
+            <Link className="hero-cta" to="/contacto">
+              Solicitar diagnostico
+            </Link>
+            <Link className="hero-cta hero-cta--ghost" to="/proyectos">
+              Ver proyectos
+            </Link>
+          </div>
         </motion.div>
 
         <motion.div className="hero-surface" initial="hidden" animate="show" custom={0.15} variants={rise}>
-          <span className="wave" aria-hidden="true" />
-          <h2>Linea visual Ingemant</h2>
-          <p>Diseño corporativo en escala azul con modo claro/oscuro y lenguaje tecnico confiable.</p>
+          {selectedBanner ? (
+            <>
+              <div className="hero-banner-frame" aria-live="polite">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={selectedBanner.id}
+                    src={selectedBanner.src}
+                    alt={selectedBanner.alt}
+                    className="hero-banner-image"
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.45, ease: 'easeOut' }}
+                  />
+                </AnimatePresence>
+              </div>
+
+              <div className="hero-thumbs" role="tablist" aria-label="Mini galeria destacada">
+                {bannerItems.map((item, index) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className={`hero-thumb ${index === activeSlide ? 'hero-thumb--active' : ''}`}
+                    onClick={() => setActiveSlide(index)}
+                    aria-label={`Mostrar ${item.alt}`}
+                    aria-selected={index === activeSlide}
+                  >
+                    <img src={item.src} alt="" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+
+              <h2>Banner de proyectos recientes</h2>
+              <p>
+                Presentacion dinamica con miniaturas reales de la carpeta gallery para mantener el sitio siempre actualizado.
+              </p>
+            </>
+          ) : (
+            <>
+              <span className="wave" aria-hidden="true" />
+              <h2>Linea visual Ingemant</h2>
+              <p>Diseño corporativo en escala azul con modo claro/oscuro y lenguaje tecnico confiable.</p>
+            </>
+          )}
         </motion.div>
       </div>
 
